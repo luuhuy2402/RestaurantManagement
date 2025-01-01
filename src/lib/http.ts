@@ -7,6 +7,7 @@ type CustomOptions = Omit<RequestInit, "method"> & {
 };
 const ENTITY_ERROR_STATUS = 422;
 const AUTHENTICATION_ERROR_STATUS = 401;
+
 type EntityErrorPayload = {
     message: string;
     errors: {
@@ -50,6 +51,7 @@ export class EntityError extends HttpError {
         this.payload = payload;
     }
 }
+
 let clientLogoutRequest: null | Promise<any> = null;
 const isClient = typeof window !== "undefined";
 const request = async <Response>(
