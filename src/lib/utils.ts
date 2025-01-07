@@ -1,3 +1,4 @@
+import { getRefreshTokenFromLocalStorage } from "./../../../Template/src/lib/utils";
 import { toast } from "@/hooks/use-toast";
 import { EntityError } from "@/lib/http";
 import { clsx, type ClassValue } from "clsx";
@@ -40,3 +41,11 @@ export const handleErrorApi = ({
         });
     }
 };
+
+const isBrowser = typeof window !== "undefined";
+
+export const getAccessTokenFromLocalStorage = () =>
+    isBrowser ? localStorage.getItem("accessToken") : null;
+
+export const getRefreshTokenToLocalStorage = () =>
+    isBrowser ? localStorage.getItem("refreshToken") : null;
